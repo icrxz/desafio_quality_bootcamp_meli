@@ -3,25 +3,22 @@ package com.meli.testing.desafioquality.form;
 import com.meli.testing.desafioquality.entity.Room;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 import java.util.List;
 
 public class PropertyForm {
     @NotNull(message = "O nome da propriedade não pode estar vazio.")
     @Pattern(regexp = "^([A-Z]+[a-zA-Z\\s]*)+$", message = "O nome da propriedade deve começar com uma letra maiúscula.")
-    @Max(value = 30, message = "O comprimento do nome não pode exceder 30 caracteres.")
+    @Size(max = 30, message = "O comprimento do nome não pode exceder 30 caracteres.")
     private String prop_name;
 
     @NotNull(message = "O Bairro não pode estar vazio.")
-    @Max(value = 45, message = "O comprimento do bairro não pode exceder 45 caracteres.")
+    @Size(max = 45, message = "O comprimento do bairro não pode exceder 45 caracteres.")
     private String prop_district;
 
     @NotNull(message = "O valor do metro quadrado não pode estar vazio")
-    @Max(value = 13, message = "O comprimento do valor de metro quadrado não pode exceder 13 dígitos")
+    @Digits(integer = 13, fraction = 0, message = "O comprimento do valor de metro quadrado não pode exceder 13 dígitos")
     private BigDecimal value_district_m2;
 
     @Valid
