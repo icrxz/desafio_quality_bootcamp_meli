@@ -15,5 +15,4 @@ public class RoomMapper {
 	public static List<RoomDTO> convertRoomListToDTO(List<Room> rooms) {
 		return rooms.stream().map(RoomDTO::new).collect(Collectors.toList());
 	}
-
 }
