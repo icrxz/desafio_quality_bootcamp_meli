@@ -2,7 +2,6 @@ package com.meli.testing.desafioquality.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +12,12 @@ public class Property {
     private Long id;
     @NotNull
     private String name;
-    @NotNull
-    private String district;
-    @NotNull
-    private BigDecimal value_district_m2;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Room> rooms = new ArrayList<>();
+
+    @ManyToOne(optional = false)
+    private District district;
 
     public Long getId() {
         return id;
@@ -37,22 +35,6 @@ public class Property {
         this.name = name;
     }
 
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public BigDecimal getValue_district_m2() {
-        return value_district_m2;
-    }
-
-    public void setValue_district_m2(BigDecimal value_district_m2) {
-        this.value_district_m2 = value_district_m2;
-    }
-
     public List<Room> getRooms() {
         return rooms;
     }
@@ -61,13 +43,20 @@ public class Property {
         this.rooms = rooms;
     }
 
+    public District getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
+    }
+
     public Property() {
     }
 
-    public Property(@NotNull String name, @NotNull String district, @NotNull BigDecimal value_district_m2, List<Room> rooms) {
+    public Property(String name, District district, List<Room> rooms) {
         this.name = name;
         this.district = district;
-        this.value_district_m2 = value_district_m2;
         this.rooms = rooms;
     }
 }

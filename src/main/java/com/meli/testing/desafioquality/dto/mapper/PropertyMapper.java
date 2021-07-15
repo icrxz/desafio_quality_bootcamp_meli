@@ -8,7 +8,6 @@ import com.meli.testing.desafioquality.entity.Property;
 public class PropertyMapper {
 
 	public static List<PropertyDTO> converter(List<Property> property) {
-
 		return property.stream().map(PropertyDTO::new).collect(Collectors.toList());
 	}
 }

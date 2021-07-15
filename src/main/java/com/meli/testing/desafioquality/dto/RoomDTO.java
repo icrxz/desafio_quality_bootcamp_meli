@@ -39,6 +39,4 @@ public class RoomDTO {
 	public void setRoom_length(Double room_length) {
 		this.room_length = room_length;
 	}
-
-
 }

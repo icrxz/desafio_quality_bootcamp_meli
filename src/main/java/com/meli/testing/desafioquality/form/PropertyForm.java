@@ -1,10 +1,7 @@
 package com.meli.testing.desafioquality.form;
 
-import com.meli.testing.desafioquality.entity.Room;
-
 import javax.validation.Valid;
 import javax.validation.constraints.*;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class PropertyForm {
@@ -13,22 +10,16 @@ public class PropertyForm {
     @Size(max = 30, message = "O comprimento do nome não pode exceder 30 caracteres.")
     private String prop_name;
 
+    @Valid
     @NotNull(message = "O Bairro não pode estar vazio.")
-    @Size(max = 45, message = "O comprimento do bairro não pode exceder 45 caracteres.")
-    private String prop_district;
-
-    @NotNull(message = "O valor do metro quadrado não pode estar vazio")
-    @Digits(integer = 11, fraction = 2, message = "O comprimento do valor de metro quadrado não pode exceder 13 dígitos")
-    private BigDecimal value_district_m2;
+    private Long prop_district_id;
 
     @Valid
     @NotEmpty(message = "Os cômodos dos imóveis deverão ser informados")
-    private List<Room> rooms;
+    private List<RoomForm> rooms;
 
-    public PropertyForm(String prop_name, String prop_district, BigDecimal value_district_m2, List<Room> rooms) {
+    public PropertyForm(String prop_name, Integer prop_district, List<RoomForm> rooms) {
         this.prop_name = prop_name;
-        this.prop_district = prop_district;
-        this.value_district_m2 = value_district_m2;
         this.rooms = rooms;
     }
 
@@ -36,15 +27,11 @@ public class PropertyForm {
         return prop_name;
     }
 
-    public String getProp_district() {
-        return prop_district;
+    public Long getProp_district_id() {
+        return prop_district_id;
     }
 
-    public BigDecimal getValue_district_m2() {
-        return value_district_m2;
-    }
-
-    public List<Room> getRooms() {
+    public List<RoomForm> getRooms() {
         return rooms;
     }
 }
