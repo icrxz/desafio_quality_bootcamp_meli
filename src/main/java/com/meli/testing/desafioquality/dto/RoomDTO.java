@@ -1,7 +1,5 @@
 package com.meli.testing.desafioquality.dto;
 
-import java.util.List;
-import java.util.stream.Collectors;
 import com.meli.testing.desafioquality.entity.Room;
 
 public class RoomDTO {
@@ -42,9 +40,5 @@ public class RoomDTO {
 		this.room_length = room_length;
 	}
 
-	public static List<RoomDTO> converter(List<Room> room) {
-
-		return room.stream().map(RoomDTO::new).collect(Collectors.toList());
-	}
 
 }
