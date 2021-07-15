@@ -3,6 +3,7 @@ package com.meli.testing.desafioquality.exception.handler;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.meli.testing.desafioquality.dto.ExceptionDTO;
 import com.meli.testing.desafioquality.exception.DistrictNotFoundException;
+import com.meli.testing.desafioquality.exception.PropertyNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -38,6 +39,11 @@ public class ApiControllerExceptionAdvice {
     @ExceptionHandler(DistrictNotFoundException.class)
     public ResponseEntity<ExceptionDTO> defaultHandler(DistrictNotFoundException e){
         return ResponseEntity.badRequest().body(new ExceptionDTO(null, e.getMessage()));
+    }
+
+    @ExceptionHandler(PropertyNotFoundException.class)
+    public ResponseEntity<ExceptionDTO> defaultHandler(PropertyNotFoundException e){
+        return ResponseEntity.badRequest().body(new ExceptionDTO(e.getMessage()));
     }
 
     @ExceptionHandler(JsonParseException.class)

@@ -1,7 +1,9 @@
-package com.meli.testing.desafioquality.dto;
+package com.meli.testing.desafioquality.dto.property;
 
 import java.util.List;
 
+import com.meli.testing.desafioquality.dto.DistrictDTO;
+import com.meli.testing.desafioquality.dto.room.RoomDTO;
 import com.meli.testing.desafioquality.dto.mapper.DistrictMapper;
 import com.meli.testing.desafioquality.dto.mapper.RoomMapper;
 import com.meli.testing.desafioquality.entity.Property;

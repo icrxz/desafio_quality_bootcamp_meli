@@ -1,4 +1,4 @@
-package com.meli.testing.desafioquality.dto;
+package com.meli.testing.desafioquality.dto.room;
 
 import com.meli.testing.desafioquality.entity.Room;
 
