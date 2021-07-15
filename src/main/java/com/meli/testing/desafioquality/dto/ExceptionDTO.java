@@ -20,7 +20,7 @@ public class ExceptionDTO {
         this.message = message;
     }
 
-    public ExceptionDTO() {
+    public ExceptionDTO(String message) {
     }
 
     public ExceptionDTO(String field, String message) {
