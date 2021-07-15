@@ -21,6 +21,7 @@ public class ExceptionDTO {
     }
 
     public ExceptionDTO(String message) {
+        this.message = message;
     }
 
     public ExceptionDTO(String field, String message) {
