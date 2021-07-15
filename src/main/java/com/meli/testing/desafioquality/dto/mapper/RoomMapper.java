@@ -8,7 +8,6 @@ import com.meli.testing.desafioquality.entity.Room;
 public class RoomMapper {
 
 	public static List<RoomDTO> converter(List<Room> room) {
-
 		return room.stream().map(RoomDTO::new).collect(Collectors.toList());
 	}
 
