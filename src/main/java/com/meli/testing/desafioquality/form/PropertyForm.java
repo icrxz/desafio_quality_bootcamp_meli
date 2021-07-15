@@ -18,7 +18,7 @@ public class PropertyForm {
     private String prop_district;
 
     @NotNull(message = "O valor do metro quadrado não pode estar vazio")
-    @Digits(integer = 13, fraction = 0, message = "O comprimento do valor de metro quadrado não pode exceder 13 dígitos")
+    @Digits(integer = 11, fraction = 2, message = "O comprimento do valor de metro quadrado não pode exceder 13 dígitos")
     private BigDecimal value_district_m2;
 
     @Valid
