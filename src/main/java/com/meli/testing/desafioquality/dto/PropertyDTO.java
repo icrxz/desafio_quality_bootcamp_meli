@@ -1,11 +1,10 @@
 package com.meli.testing.desafioquality.dto;
 
         import java.math.BigDecimal;
-        import java.util.ArrayList;
-        import java.util.List;
-        import java.util.stream.Collectors;
-        import com.meli.testing.desafioquality.entity.Property;
-        import com.meli.testing.desafioquality.entity.Room;
+import java.util.ArrayList;
+import java.util.List;
+import com.meli.testing.desafioquality.dto.mapper.RoomMapper;
+import com.meli.testing.desafioquality.entity.Property;
 
 public class PropertyDTO {
 
@@ -25,7 +24,7 @@ public class PropertyDTO {
         this.prop_name = property.getName();
         this.prop_district = property.getDistrict();
         this.value_district_m2 = property.getValue_district_m2();
-        this.rooms = RoomMapperproperty.getRooms();
+        this.rooms = RoomMapper.convertRoomListToDTO(property.getRooms()) ;
     }
     
    
@@ -68,15 +67,5 @@ public class PropertyDTO {
 	public void setRooms(List<RoomDTO> rooms) {
 		this.rooms = rooms;
 	}
-	 
-	public static List<RoomDTO> convertRoomListToDTO(List<Room> rooms) {
-	        return rooms.stream().map(RoomDTO::new).collect(Collectors.toList());
-	    }
-	 
-	 
-	public static List<PropertyDTO> converter(List<Property> property) {
-
-        return property.stream().map(PropertyDTO::new).collect(Collectors.toList());
-    }
 
 }
