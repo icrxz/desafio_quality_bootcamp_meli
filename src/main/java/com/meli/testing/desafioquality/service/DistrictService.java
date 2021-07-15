@@ -29,6 +29,15 @@ public class DistrictService {
         return DistrictMapper.convert(district);
     }
 
+    public District getDistrictById(Long id) {
+        District district = districtRepository.findById(id).orElse(null);
+
+        if (district == null)
+            throw new DistrictNotFoundException("O bairro não foi encontrado.");
+
+        return district;
+    }
+
     public DistrictDTO createDistrict(DistrictForm districtForm) {
         District newDistrict = DistrictMapper.convert(districtForm);
 

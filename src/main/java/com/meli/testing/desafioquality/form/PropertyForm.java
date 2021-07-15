@@ -10,7 +10,6 @@ public class PropertyForm {
     @Size(max = 30, message = "O comprimento do nome não pode exceder 30 caracteres.")
     private String prop_name;
 
-    @Valid
     @NotNull(message = "O Bairro não pode estar vazio.")
     private Long prop_district_id;
 
@@ -18,9 +17,10 @@ public class PropertyForm {
     @NotEmpty(message = "Os cômodos dos imóveis deverão ser informados")
     private List<RoomForm> rooms;
 
-    public PropertyForm(String prop_name, Integer prop_district, List<RoomForm> rooms) {
+    public PropertyForm(String prop_name, Long prop_district_id, List<RoomForm> rooms) {
         this.prop_name = prop_name;
         this.rooms = rooms;
+        this.prop_district_id = prop_district_id;
     }
 
     public String getProp_name() {
