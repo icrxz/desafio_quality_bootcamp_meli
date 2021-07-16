@@ -43,4 +43,9 @@ public class PropertyController {
     public ResponseEntity<PropertyM2DTO> calculateArea(@PathVariable long id) {
         return new ResponseEntity<>(this.propertyService.calculateArea(id), HttpStatus.OK);
     }
+
+    @GetMapping("/value-property/{id}")
+    public ResponseEntity<PropertyM2DTO> getPropertyValue(@PathVariable long id) {
+        return new ResponseEntity<>(this.propertyService.getPropertyValue(id), HttpStatus.OK);
+    }
 }
