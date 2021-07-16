@@ -28,13 +28,4 @@ public class RoomForm {
     public Double getRoom_length() {
         return room_length;
     }
-
-    public RoomForm() {
-    }
-
-    public RoomForm(String name, Double width, Double length) {
-        this.room_name = name;
-        this.room_width = width;
-        this.room_length = length;
-    }
 }

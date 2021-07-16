@@ -3,6 +3,7 @@ package com.meli.testing.desafioquality.controller;
 import com.meli.testing.desafioquality.dto.property.PropertyDTO;
 import com.meli.testing.desafioquality.dto.property.PropertyM2DTO;
 import com.meli.testing.desafioquality.dto.property.PropertyRoomsM2DTO;
+import com.meli.testing.desafioquality.dto.property.PropertyValueDTO;
 import com.meli.testing.desafioquality.dto.room.RoomMt2DTO;
 import com.meli.testing.desafioquality.form.PropertyForm;
 import com.meli.testing.desafioquality.service.PropertyService;
@@ -41,7 +42,7 @@ public class PropertyController {
     }
 
     @GetMapping("/biggest-room-m2/{id}")
-    public ResponseEntity<RoomMt2DTO> RoomM2(@PathVariable long id) {
+    public ResponseEntity<RoomMt2DTO> biggestRoomM2(@PathVariable long id) {
         return new ResponseEntity<>(this.propertyService.biggestRoom(id), HttpStatus.OK);
     }
 
@@ -51,7 +52,7 @@ public class PropertyController {
     }
 
     @GetMapping("/value-property/{id}")
-    public ResponseEntity<PropertyM2DTO> getPropertyValue(@PathVariable long id) {
+    public ResponseEntity<PropertyValueDTO> getPropertyValue(@PathVariable long id) {
         return new ResponseEntity<>(this.propertyService.getPropertyValue(id), HttpStatus.OK);
     }
 }
