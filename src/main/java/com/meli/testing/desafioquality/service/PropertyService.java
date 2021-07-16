@@ -4,6 +4,7 @@ import com.meli.testing.desafioquality.dto.mapper.PropertyMapper;
 import com.meli.testing.desafioquality.dto.property.PropertyDTO;
 import com.meli.testing.desafioquality.dto.property.PropertyM2DTO;
 import com.meli.testing.desafioquality.dto.property.PropertyRoomsM2DTO;
+import com.meli.testing.desafioquality.dto.property.PropertyValueDTO;
 import com.meli.testing.desafioquality.dto.room.RoomMt2DTO;
 import com.meli.testing.desafioquality.entity.District;
 import com.meli.testing.desafioquality.entity.Property;
@@ -15,9 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.stream.Collectors;
 
 @Service
 public class PropertyService {
@@ -49,8 +50,10 @@ public class PropertyService {
 
     public PropertyM2DTO calculateArea(long id) {
         Property property = findPropertyById(id);
-        Double propertym2 = property.getRooms().stream().mapToDouble(room -> CalculateRoom.calculateArea(room)).sum();
-        return new PropertyM2DTO(property.getName(), propertym2);
+
+        Double propertyM2 = CalculateArea.calculateProperty(property);
+
+        return new PropertyM2DTO(property.getName(), propertyM2);
     }
 
     public PropertyDTO createProperty(PropertyForm propertyForm) {
@@ -81,11 +84,12 @@ public class PropertyService {
         return PropertyMapper.convert(propertyRepository.findAll());
     }
 
-    public PropertyM2DTO getPropertyValue(long id) {
+    public PropertyValueDTO getPropertyValue(long id) {
         Property property = findPropertyById(id);
-        PropertyM2DTO propertyDTO = calculateArea(property.getId());
-        propertyDTO.setProp_value(property.getDistrict().getValue_m2().multiply(new BigDecimal(propertyDTO.getProp_m2())));
 
-        return propertyDTO;
+        Double propertyArea = CalculateArea.calculateProperty(property);
+        BigDecimal propValue = property.getDistrict().getValue_m2().multiply(BigDecimal.valueOf(propertyArea));
+
+        return new PropertyValueDTO(property.getName(), propertyArea, propValue);
     }
 }
