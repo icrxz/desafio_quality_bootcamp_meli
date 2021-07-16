@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class UtilCalculateRoomTest {
+public class UtilCalculateAreaTest {
     private Room mockedRoom;
 
     public Room createRoom() {
@@ -22,7 +22,7 @@ public class UtilCalculateRoomTest {
     @Test
     public void shouldCalculateRoomArea() {
         double expectedArea = (4.6 * 3.5);
-        double calculatedArea = CalculateRoom.calculateArea(mockedRoom);
+        double calculatedArea = CalculateArea.calculateRoom(mockedRoom);
 
         Assertions.assertEquals(expectedArea, calculatedArea);
     }
@@ -30,7 +30,7 @@ public class UtilCalculateRoomTest {
     @Test
     public void shouldNotCalculateRoomsArea() {
         double wrongArea = (4.6 * 3.4);
-        double calculatedArea = CalculateRoom.calculateArea(mockedRoom);
+        double calculatedArea = CalculateArea.calculateRoom(mockedRoom);
 
         Assertions.assertNotEquals(wrongArea, calculatedArea);
     }
