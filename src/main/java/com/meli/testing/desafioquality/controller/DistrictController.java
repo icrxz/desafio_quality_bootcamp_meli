@@ -25,20 +25,20 @@ public class DistrictController {
     public ResponseEntity<DistrictDTO> createDistrict(@RequestBody @Valid DistrictForm districtForm) {
         DistrictDTO newDistrict = districtService.createDistrict(districtForm);
 
-        return new ResponseEntity(newDistrict, HttpStatus.CREATED);
+        return new ResponseEntity<>(newDistrict, HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<List<DistrictDTO>> getListDistrict() {
         List<DistrictDTO> districtList = districtService.getAllDistrict();
 
-        return new ResponseEntity(districtList, HttpStatus.OK);
+        return new ResponseEntity<>(districtList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<DistrictDTO> getDistrict(@PathVariable Long id) {
         DistrictDTO districtList = districtService.getDistrict(id);
 
-        return new ResponseEntity(districtList, HttpStatus.OK);
+        return new ResponseEntity<>(districtList, HttpStatus.OK);
     }
 }

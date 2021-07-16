@@ -27,12 +27,4 @@ public class DistrictForm {
     public BigDecimal getValue_district_m2() {
         return value_district_m2;
     }
-
-    public DistrictForm() {
-    }
-
-    public DistrictForm(String district_name, BigDecimal value_district_m2) {
-        this.district_name = district_name;
-        this.value_district_m2 = value_district_m2;
-    }
 }

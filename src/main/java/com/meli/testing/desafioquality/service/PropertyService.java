@@ -10,7 +10,7 @@ import com.meli.testing.desafioquality.entity.Property;
 import com.meli.testing.desafioquality.exception.PropertyNotFoundException;
 import com.meli.testing.desafioquality.form.PropertyForm;
 import com.meli.testing.desafioquality.repository.PropertyRepository;
-import com.meli.testing.desafioquality.utils.CalculateRoom;
+import com.meli.testing.desafioquality.utils.CalculateArea;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,9 +32,11 @@ public class PropertyService {
 
     public Property findPropertyById(long id) {
         Property property = this.propertyRepository.findById(id).stream().findFirst().orElse(null);
+
         if (property == null) {
             throw new PropertyNotFoundException("Propriedade não encontrada");
         }
+
         return property;
     }
 
@@ -56,6 +58,7 @@ public class PropertyService {
 
         Property newProperty = PropertyMapper.convert(propertyForm, district);
         Property createdProperty = propertyRepository.save(newProperty);
+
         return PropertyMapper.convert(createdProperty);
     }
 
@@ -63,12 +66,14 @@ public class PropertyService {
         PropertyRoomsM2DTO propertyRooms = calculateAreaPerRoom(id);
         AtomicReference<RoomMt2DTO> roomMt = new AtomicReference<>();
         AtomicReference<Double> big = new AtomicReference<>((double) Integer.MIN_VALUE);
+
         propertyRooms.getRooms().forEach(room -> {
             if (room.getRoom_mt2() > big.get()) {
                 roomMt.set(room);
                 big.set(room.getRoom_mt2());
             }
         });
+
         return roomMt.get();
     }
 
