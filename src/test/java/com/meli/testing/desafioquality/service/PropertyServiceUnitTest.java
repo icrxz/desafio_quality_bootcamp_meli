@@ -13,6 +13,7 @@ import com.meli.testing.desafioquality.entity.District;
 import com.meli.testing.desafioquality.entity.Property;
 import com.meli.testing.desafioquality.entity.Room;
 import com.meli.testing.desafioquality.exception.PropertyNotFoundException;
+import com.meli.testing.desafioquality.mocks.PropertyMock;
 import com.meli.testing.desafioquality.repository.PropertyRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -46,14 +47,7 @@ public class PropertyServiceUnitTest {
 	@DisplayName("should return a DTO if calculate value succeeds")
 	void testGetPropertyValue() {
 		// arrange
-		District district = new District("any_district_name", new BigDecimal(100.00), null);
-		List<Room> rooms = new ArrayList<>(){
-			{ add(new Room("any_description", 100.0, 100.0)); }
-			{ add(new Room("any_description", 100.0, 100.0)); }
-		};
-		Property property = new Property("any_property_name", district, rooms);
-		property.setId(1L);
-		given(propertyRepository.findById(1L)).willReturn(java.util.Optional.of(property));
+		given(propertyRepository.findById(1L)).willReturn(java.util.Optional.of(PropertyMock.create()));
 
 		// act and assert
 		PropertyM2DTO propertyM2DTO = propertyService.getPropertyValue(1L);
