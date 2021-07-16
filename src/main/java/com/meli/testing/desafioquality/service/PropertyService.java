@@ -43,8 +43,13 @@ public class PropertyService {
 
     public PropertyRoomsM2DTO calculateAreaPerRoom (long id) {
         Property property = findPropertyById(id);
-        List<RoomMt2DTO> listRooms = new ArrayList<>();
-        property.getRooms().forEach(room -> listRooms.add(new RoomMt2DTO(room)));
+
+        List<RoomMt2DTO> listRooms = property
+                .getRooms()
+                .stream()
+                .map(RoomMt2DTO::new)
+                .collect(Collectors.toList());
+
         return PropertyMapper.convert(property, listRooms);
     }
 
