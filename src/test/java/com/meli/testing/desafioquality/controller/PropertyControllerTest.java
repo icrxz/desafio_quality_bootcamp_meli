@@ -55,9 +55,9 @@ class PropertyControllerTest {
 		given(propertyRepository.findById(1L)).willReturn(java.util.Optional.of(PropertyMock.create()));
 
 		mock.perform(get("/property/calculate-m2/{id}", 1L))
-				.andExpect(status().isOk())
-				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-				.andExpect(jsonPath("$.prop_m2").value(200));
+        .andExpect(status().isOk())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.prop_m2").value(200));
 	}
 
 	@Test
@@ -70,5 +70,14 @@ class PropertyControllerTest {
 				.andExpect(status().isOk())
 				.andExpect(content().contentTypeCompatibleWith("application/json"))
 				.andExpect(jsonPath("$.prop_value").value(20000.0));
+	}
+
+	@Test
+	@DisplayName("should throw if property are not found")
+	public void shouldThrowsIfPropertyAreNotFound() throws Exception {
+		mock.perform(get("/property/value-property/{id}", 1L))
+				.andExpect(status().isBadRequest())
+				.andExpect(content().contentTypeCompatibleWith("application/json"))
+				.andExpect(jsonPath("$.message").value("Propriedade não encontrada"));
 	}
 }

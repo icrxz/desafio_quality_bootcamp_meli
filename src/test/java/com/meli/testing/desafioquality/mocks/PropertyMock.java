@@ -11,7 +11,7 @@ import java.util.List;
 public class PropertyMock {
 
     public static Property create() {
-        District district = new District("any_district_name", new BigDecimal(100.00), null);
+        District district = new District("any_district_name", new BigDecimal(100.00));
         List<Room> rooms = new ArrayList<>(){
             { add(new Room("any_description", 10.0, 10.0)); }
             { add(new Room("any_description", 10.0, 10.0)); }

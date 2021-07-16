@@ -3,15 +3,8 @@ package com.meli.testing.desafioquality.service;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.verify;
-
-import com.meli.testing.desafioquality.dto.property.PropertyM2DTO;
-import com.meli.testing.desafioquality.entity.District;
-import com.meli.testing.desafioquality.entity.Property;
-import com.meli.testing.desafioquality.entity.Room;
+import com.meli.testing.desafioquality.dto.property.PropertyValueDTO;
 import com.meli.testing.desafioquality.exception.PropertyNotFoundException;
 import com.meli.testing.desafioquality.mocks.PropertyMock;
 import com.meli.testing.desafioquality.repository.PropertyRepository;
@@ -23,8 +16,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 @ExtendWith(MockitoExtension.class)
 public class PropertyServiceUnitTest {
@@ -50,8 +41,8 @@ public class PropertyServiceUnitTest {
 		given(propertyRepository.findById(1L)).willReturn(java.util.Optional.of(PropertyMock.create()));
 
 		// act and assert
-		PropertyM2DTO propertyM2DTO = propertyService.getPropertyValue(1L);
-		assertThat(propertyM2DTO.getProp_value()).isEqualByComparingTo(new BigDecimal(2000000));
+		PropertyValueDTO propertyValueDTO = propertyService.getPropertyValue(1L);
+		assertThat(propertyValueDTO.getProp_value()).isEqualByComparingTo(new BigDecimal(20000.0));
 	}
 
 	@Test
