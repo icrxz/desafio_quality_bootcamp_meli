@@ -9,4 +9,8 @@ public class CalculateArea {
     public static Double calculateRoom(Room room) {
         return room.getWidth() * room.getLength();
     }
+
+    public static Double calculateProperty(Property property) {
+        return property.getRooms().stream().mapToDouble(CalculateArea::calculateRoom).sum();
+    }
 }
