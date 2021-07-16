@@ -1,6 +1,7 @@
 package com.meli.testing.desafioquality.controller;
 
 import com.meli.testing.desafioquality.dto.property.PropertyDTO;
+import com.meli.testing.desafioquality.dto.property.PropertyM2DTO;
 import com.meli.testing.desafioquality.dto.property.PropertyRoomsM2DTO;
 import com.meli.testing.desafioquality.dto.room.RoomMt2DTO;
 import com.meli.testing.desafioquality.form.PropertyForm;
@@ -30,7 +31,7 @@ public class PropertyController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PropertyDTO>> calculateRoomM2() {
+    public ResponseEntity<List<PropertyDTO>> getAllProperties() {
         return new ResponseEntity<>(this.propertyService.getAllProperties(), HttpStatus.OK);
     }
 
@@ -42,5 +43,15 @@ public class PropertyController {
     @GetMapping("/biggest-room-m2/{id}")
     public ResponseEntity<RoomMt2DTO> RoomM2(@PathVariable long id) {
         return new ResponseEntity<>(this.propertyService.biggestRoom(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/calculate-m2/{id}")
+    public ResponseEntity<PropertyM2DTO> calculateArea(@PathVariable long id) {
+        return new ResponseEntity<>(this.propertyService.calculateArea(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/value-property/{id}")
+    public ResponseEntity<PropertyM2DTO> getPropertyValue(@PathVariable long id) {
+        return new ResponseEntity<>(this.propertyService.getPropertyValue(id), HttpStatus.OK);
     }
 }
