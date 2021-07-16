@@ -14,8 +14,10 @@ import com.meli.testing.desafioquality.utils.CalculateRoom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class PropertyService {
@@ -47,7 +49,6 @@ public class PropertyService {
         Property property = findPropertyById(id);
         Double propertym2 = property.getRooms().stream().mapToDouble(room -> CalculateRoom.calculateArea(room)).sum();
         return new PropertyM2DTO(property.getName(), propertym2);
-
     }
 
     public PropertyDTO createProperty(PropertyForm propertyForm) {
@@ -62,4 +63,11 @@ public class PropertyService {
         return PropertyMapper.convert(propertyRepository.findAll());
     }
 
+    public PropertyM2DTO getPropertyValue(long id) {
+        Property property = findPropertyById(id);
+        PropertyM2DTO propertyDTO = calculateArea(property.getId());
+        propertyDTO.setProp_value(property.getDistrict().getValue_m2().multiply(new BigDecimal(propertyDTO.getProp_m2())));
+
+        return propertyDTO;
+    }
 }
