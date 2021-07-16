@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DesafioqualityApplication {
+public class DesafioQualityApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DesafioqualityApplication.class, args);
+        SpringApplication.run(DesafioQualityApplication.class, args);
     }
 
 }
