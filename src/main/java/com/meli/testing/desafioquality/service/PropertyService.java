@@ -59,6 +59,19 @@ public class PropertyService {
         return PropertyMapper.convert(createdProperty);
     }
 
+    public RoomMt2DTO biggestRoom (long id) {
+        PropertyRoomsM2DTO propertyRooms = calculateAreaPerRoom(id);
+        AtomicReference<RoomMt2DTO> roomMt = new AtomicReference<>();
+        AtomicReference<Double> big = new AtomicReference<>((double) Integer.MIN_VALUE);
+        propertyRooms.getRooms().forEach(room -> {
+            if (room.getRoom_mt2() > big.get()) {
+                roomMt.set(room);
+                big.set(room.getRoom_mt2());
+            }
+        });
+        return roomMt.get();
+    }
+
     public List<PropertyDTO> getAllProperties() {
         return PropertyMapper.convert(propertyRepository.findAll());
     }

@@ -3,6 +3,7 @@ package com.meli.testing.desafioquality.controller;
 import com.meli.testing.desafioquality.dto.property.PropertyDTO;
 import com.meli.testing.desafioquality.dto.property.PropertyM2DTO;
 import com.meli.testing.desafioquality.dto.property.PropertyRoomsM2DTO;
+import com.meli.testing.desafioquality.dto.room.RoomMt2DTO;
 import com.meli.testing.desafioquality.form.PropertyForm;
 import com.meli.testing.desafioquality.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,11 @@ public class PropertyController {
     @GetMapping("/calculate-room-m2/{id}")
     public ResponseEntity<PropertyRoomsM2DTO> calculateRoomM2(@PathVariable long id) {
         return new ResponseEntity<>(this.propertyService.calculateAreaPerRoom(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/biggest-room-m2/{id}")
+    public ResponseEntity<RoomMt2DTO> RoomM2(@PathVariable long id) {
+        return new ResponseEntity<>(this.propertyService.biggestRoom(id), HttpStatus.OK);
     }
 
     @GetMapping("/calculate-m2/{id}")
