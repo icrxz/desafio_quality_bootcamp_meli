@@ -36,7 +36,7 @@ public class DistrictController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<DistrictDTO>> getDistrict(@PathVariable Long id) {
+    public ResponseEntity<DistrictDTO> getDistrict(@PathVariable Long id) {
         DistrictDTO districtList = districtService.getDistrict(id);
 
         return new ResponseEntity(districtList, HttpStatus.OK);
