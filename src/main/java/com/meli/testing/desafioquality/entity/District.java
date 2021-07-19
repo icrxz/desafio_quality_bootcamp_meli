@@ -15,7 +15,6 @@ public class District {
     private String name;
     @NotNull
     private BigDecimal value_m2;
-
     @OneToMany(mappedBy = "district")
     private List<Property> acres = new ArrayList<>();
 
