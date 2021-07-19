@@ -70,7 +70,7 @@ public class PropertyService {
         return PropertyMapper.convert(createdProperty);
     }
 
-    public RoomMt2DTO biggestRoom (long id) {
+    public RoomMt2DTO getBiggestRoom(long id) {
         PropertyRoomsM2DTO propertyRooms = calculateAreaPerRoom(id);
         AtomicReference<RoomMt2DTO> roomMt = new AtomicReference<>();
         AtomicReference<Double> big = new AtomicReference<>((double) Integer.MIN_VALUE);
