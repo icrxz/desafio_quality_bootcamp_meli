@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 import com.meli.testing.desafioquality.dto.property.PropertyValueDTO;
+import com.meli.testing.desafioquality.dto.room.RoomMt2DTO;
 import com.meli.testing.desafioquality.exception.PropertyNotFoundException;
 import com.meli.testing.desafioquality.mocks.PropertyMock;
 import com.meli.testing.desafioquality.repository.PropertyRepository;
@@ -36,19 +37,40 @@ public class PropertyServiceUnitTest {
 
 	@Test
 	@DisplayName("should return a DTO if calculate value succeeds")
-	void testGetPropertyValue() {
+	void shouldTestGetPropertyValue() {
 		// arrange
 		given(propertyRepository.findById(1L)).willReturn(java.util.Optional.of(PropertyMock.create()));
 
 		// act and assert
 		PropertyValueDTO propertyValueDTO = propertyService.getPropertyValue(1L);
-		assertThat(propertyValueDTO.getProp_value()).isEqualByComparingTo(new BigDecimal(20000.0));
+		assertThat(propertyValueDTO.getProp_value()).isEqualByComparingTo(new BigDecimal(50000.0));
 	}
 
 	@Test
 	@DisplayName("should throws if property are not found")
-	void testGetPropertyValueThrowsNotFound() throws Exception{
+	void shouldTestGetPropertyValueThrowsNotFound() throws Exception{
 		Throwable exception = assertThrows(PropertyNotFoundException.class, () -> propertyService.getPropertyValue(1L));
 		assertEquals("Propriedade não encontrada", exception.getMessage());
+	}
+
+	@Test
+	@DisplayName("should return biggest room DTO")
+	void shouldTestGetBiggestRoomValue() {
+		given(propertyRepository.findById(1L)).willReturn(java.util.Optional.of(PropertyMock.create()));
+
+		RoomMt2DTO roomMt2DTO = propertyService.getBiggestRoom(1L);
+
+		assertThat(roomMt2DTO.getRoom_name()).isEqualTo("biggest_room");
+		assertThat(roomMt2DTO.getRoom_mt2()).isEqualTo(300.0);
+	}
+
+	@Test
+	@DisplayName("should not match wrong room")
+	void shouldTestGetBiggestRoomValueNotMatch() {
+		given(propertyRepository.findById(1L)).willReturn(java.util.Optional.of(PropertyMock.create()));
+
+		RoomMt2DTO roomMt2DTO = propertyService.getBiggestRoom(1L);
+
+		assertThat(roomMt2DTO.getRoom_name()).isNotEqualTo("any_description");
 	}
 }

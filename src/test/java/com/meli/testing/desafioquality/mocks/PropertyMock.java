@@ -15,6 +15,8 @@ public class PropertyMock {
         List<Room> rooms = new ArrayList<>(){
             { add(new Room("any_description", 10.0, 10.0)); }
             { add(new Room("any_description", 10.0, 10.0)); }
+            { add(new Room("biggest_room", 15.0, 20.0)); }
+
         };
         Property property = new Property("any_property_name", district, rooms);
         property.setId(1L);

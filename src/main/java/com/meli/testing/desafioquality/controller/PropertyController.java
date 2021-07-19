@@ -43,7 +43,7 @@ public class PropertyController {
 
     @GetMapping("/biggest-room-m2/{id}")
     public ResponseEntity<RoomMt2DTO> biggestRoomM2(@PathVariable long id) {
-        return new ResponseEntity<>(this.propertyService.biggestRoom(id), HttpStatus.OK);
+        return new ResponseEntity<>(this.propertyService.getBiggestRoom(id), HttpStatus.OK);
     }
 
     @GetMapping("/calculate-m2/{id}")
