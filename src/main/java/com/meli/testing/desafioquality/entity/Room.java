@@ -14,8 +14,19 @@ public class Room {
     private Double width;
     @NotNull
     private Double length;
+    @ManyToOne(optional = false)
+    private Property property;
+    
 
-    public Long getId() {
+    public Property getProperty() {
+		return property;
+	}
+
+	public void setProperty(Property property) {
+		this.property = property;
+	}
+
+	public Long getId() {
         return id;
     }
 
