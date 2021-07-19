@@ -12,8 +12,7 @@ public class Property {
     private Long id;
     @NotNull
     private String name;
-
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy="property")
     private List<Room> rooms = new ArrayList<>();
 
     @ManyToOne(optional = false)
@@ -59,4 +58,5 @@ public class Property {
         this.district = district;
         this.rooms = rooms;
     }
+    
 }

@@ -61,6 +61,27 @@ class PropertyControllerTest {
 	}
 
 	@Test
+	public void PropertyServiceIntTestCheckinResultAreaCalculationValueRight() throws Exception {
+		given(propertyRepository.findById(1L)).willReturn(java.util.Optional.of(PropertyMock.createPropertyM2()));
+
+		mock.perform(get("/property/calculate-m2/{id}", 1L))
+				.andExpect(status().isOk())
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$.prop_m2").value(1590.0));
+	}
+	
+	@Test
+	public void PropertyServiceIntTestCheckinResultPropertyCalculationM2IdIncorrectPropertyNotFoundExceptionMessageError() throws Exception {
+		given(propertyRepository.findById(1L)).willReturn(java.util.Optional.of(PropertyMock.createPropertyM2()));
+
+		mock.perform(get("/property/calculate-m2/{id}", 0L))
+        .andExpect(status().isBadRequest())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.message").value("Propriedade não encontrada"));
+	}
+
+
+	@Test
 	@DisplayName("should return a property value if succeeds")
 	public void shouldReturnPropertyValue() throws Exception {
 		// arrange

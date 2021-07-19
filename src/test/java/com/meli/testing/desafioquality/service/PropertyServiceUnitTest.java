@@ -9,10 +9,12 @@ import com.meli.testing.desafioquality.dto.room.RoomMt2DTO;
 import com.meli.testing.desafioquality.exception.PropertyNotFoundException;
 import com.meli.testing.desafioquality.mocks.PropertyMock;
 import com.meli.testing.desafioquality.repository.PropertyRepository;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -21,6 +23,7 @@ import java.math.BigDecimal;
 @ExtendWith(MockitoExtension.class)
 public class PropertyServiceUnitTest {
 
+	//@InjectMocks
 	private PropertyService propertyService;
 
 	@Mock
@@ -72,5 +75,26 @@ public class PropertyServiceUnitTest {
 		RoomMt2DTO roomMt2DTO = propertyService.getBiggestRoom(1L);
 
 		assertThat(roomMt2DTO.getRoom_name()).isNotEqualTo("any_description");
+	}
+
+	@Test
+	public void PropertyServiceUnitTestCheckinResultAreaCalculationValueRight() throws Exception {
+		given(propertyRepository.findById(1L)).willReturn(java.util.Optional.of(PropertyMock.createPropertyM2()));
+		double result = (propertyService.calculateArea(1L)).getProp_m2();
+		Assertions.assertEquals(1590.0, result);
+	}
+
+	@Test
+	public void PropertyServiceUnitTestCheckinResultAreaCalculationNameRight() throws Exception {
+		given(propertyRepository.findById(1L)).willReturn(java.util.Optional.of(PropertyMock.createPropertyM2()));
+		String result = (propertyService.calculateArea(1L)).getProp_name();
+		Assertions.assertEquals("any_property_name", result);
+	}
+
+	@Test
+	@DisplayName("should throws if property are not found")
+	public void PropertyServiceUnitTestCheckinIdIncorrectPropertyNotFoundExceptionMessageError() throws Exception {
+		Throwable exception = assertThrows(PropertyNotFoundException.class, () -> propertyService.calculateArea(0L));
+		assertEquals("Propriedade não encontrada", exception.getMessage());
 	}
 }

@@ -20,62 +20,32 @@ INSERT INTO PROPERTY(id, name, district_id) VALUES(8, 'Apartamento República', 
 INSERT INTO PROPERTY(id, name, district_id) VALUES(9, 'Cobertura', '6');
 INSERT INTO PROPERTY(id, name, district_id) VALUES(10, 'Cobertura Duplex', '10');
 
-INSERT INTO ROOM(id, name, length, width) VALUES(1, 'Banheiro', 5, 5);
-INSERT INTO ROOM(id, name, length, width) VALUES(2, 'Quarto', 15, 1);
-INSERT INTO ROOM(id, name, length, width) VALUES(3, 'Sala', 20, 15);
-INSERT INTO ROOM(id, name, length, width) VALUES(4, 'Cozinha', 25, 20);
-INSERT INTO ROOM(id, name, length, width) VALUES(5, 'Suite', 30, 25);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(1, 'Banheiro', 5, 5, 1);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(2, 'Quarto', 15, 1, 1);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(3, 'Sala',20, 15, 1);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(4, 'Cozinha',25, 20, 1);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(5, 'Suite', 30, 25, 1);
 
-INSERT INTO PROPERTY_ROOMS VALUES (1, 1);
-INSERT INTO PROPERTY_ROOMS VALUES (1, 2);
-INSERT INTO PROPERTY_ROOMS VALUES (1, 3);
-INSERT INTO PROPERTY_ROOMS VALUES (1, 4);
-INSERT INTO PROPERTY_ROOMS VALUES (1, 5);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(6, 'Banheiro', 5, 5, 2);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(7, 'Quarta', 15, 1, 2);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(8, 'Sala', 20, 15, 2);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(9, 'Cozinha', 25, 20, 2);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(10, 'Suite Master', 30, 25, 2);
 
-INSERT INTO ROOM(id, name, length, width) VALUES(6, 'Banheiro', 5, 5);
-INSERT INTO ROOM(id, name, length, width) VALUES(7, 'Quarta', 15, 1);
-INSERT INTO ROOM(id, name, length, width) VALUES(8, 'Sala', 20, 15);
-INSERT INTO ROOM(id, name, length, width) VALUES(9, 'Cozinha', 25, 20);
-INSERT INTO ROOM(id, name, length, width) VALUES(10, 'Suite Master', 30, 25);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(11, 'Banheiro', 5, 5, 3);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(12, 'Quarto', 15, 1, 3);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(13, 'Sala', 20, 15, 3);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(14, 'Cozinha', 25, 20, 3);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(15, 'Quarto Casal', 30, 25, 3);
 
-INSERT INTO PROPERTY_ROOMS VALUES (2, 6);
-INSERT INTO PROPERTY_ROOMS VALUES (2, 7);
-INSERT INTO PROPERTY_ROOMS VALUES (2, 8);
-INSERT INTO PROPERTY_ROOMS VALUES (2, 9);
-INSERT INTO PROPERTY_ROOMS VALUES (2, 10);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(16, 'Banheiro', 5, 5, 4);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(17, 'Quarto', 15, 1, 4);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(18, 'Sala', 20, 15, 4);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(19, 'Cozinha', 25, 20, 4);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(20, 'Sala Jantar', 30, 25, 4);
 
-INSERT INTO ROOM(id, name, length, width) VALUES(11, 'Banheiro', 5, 5);
-INSERT INTO ROOM(id, name, length, width) VALUES(12, 'Quarto', 15, 1);
-INSERT INTO ROOM(id, name, length, width) VALUES(13, 'Sala', 20, 15);
-INSERT INTO ROOM(id, name, length, width) VALUES(14, 'Cozinha', 25, 20);
-INSERT INTO ROOM(id, name, length, width) VALUES(15, 'Quarto Casal', 30, 25);
-
-INSERT INTO PROPERTY_ROOMS VALUES (3, 11);
-INSERT INTO PROPERTY_ROOMS VALUES (3, 12);
-INSERT INTO PROPERTY_ROOMS VALUES (3, 13);
-INSERT INTO PROPERTY_ROOMS VALUES (3, 14);
-INSERT INTO PROPERTY_ROOMS VALUES (3, 15);
-
-INSERT INTO ROOM(id, name, length, width) VALUES(16, 'Banheiro', 5, 5);
-INSERT INTO ROOM(id, name, length, width) VALUES(17, 'Quarto', 15, 1);
-INSERT INTO ROOM(id, name, length, width) VALUES(18, 'Sala', 20, 15);
-INSERT INTO ROOM(id, name, length, width) VALUES(19, 'Cozinha', 25, 20);
-INSERT INTO ROOM(id, name, length, width) VALUES(20, 'Sala Jantar', 30, 25);
-
-INSERT INTO PROPERTY_ROOMS VALUES (4, 16);
-INSERT INTO PROPERTY_ROOMS VALUES (4, 17);
-INSERT INTO PROPERTY_ROOMS VALUES (4, 18);
-INSERT INTO PROPERTY_ROOMS VALUES (4, 19);
-INSERT INTO PROPERTY_ROOMS VALUES (4, 20);
-
-INSERT INTO ROOM(id, name, length, width) VALUES(21, 'Banheiro', 5, 5);
-INSERT INTO ROOM(id, name, length, width) VALUES(22, 'Quarto', 15, 1);
-INSERT INTO ROOM(id, name, length, width) VALUES(23, 'Sala', 20, 15);
-INSERT INTO ROOM(id, name, length, width) VALUES(24, 'Academia', 25, 20);
-INSERT INTO ROOM(id, name, length, width) VALUES(25, 'Escritório', 30, 25);
-
-INSERT INTO PROPERTY_ROOMS VALUES (5, 21);
-INSERT INTO PROPERTY_ROOMS VALUES (5, 22);
-INSERT INTO PROPERTY_ROOMS VALUES (5, 23);
-INSERT INTO PROPERTY_ROOMS VALUES (5, 24);
-INSERT INTO PROPERTY_ROOMS VALUES (5, 25);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(21, 'Banheiro', 5, 5, 5);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(22, 'Quarto', 15, 1, 5);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(23, 'Sala', 20, 15, 5);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(24, 'Academia', 25, 20, 5);
+INSERT INTO ROOM(id, name, length, width, property_id) VALUES(25, 'Escritório', 30, 25, 5);
