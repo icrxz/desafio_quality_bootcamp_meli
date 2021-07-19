@@ -41,7 +41,7 @@ public class PropertyDTO {
 		this.prop_name = prop_name;
 	}
 
-	public DistrictDTO getProp_district_id() {
+	public DistrictDTO getProp_district() {
 		return prop_district;
 	}
 
@@ -56,5 +56,4 @@ public class PropertyDTO {
 	public void setRooms(List<RoomDTO> rooms) {
 		this.rooms = rooms;
 	}
-
 }

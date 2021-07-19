@@ -3,6 +3,8 @@ package com.meli.testing.desafioquality.controller;
 import com.meli.testing.desafioquality.dto.property.PropertyDTO;
 import com.meli.testing.desafioquality.dto.property.PropertyM2DTO;
 import com.meli.testing.desafioquality.dto.property.PropertyRoomsM2DTO;
+import com.meli.testing.desafioquality.dto.property.PropertyValueDTO;
+import com.meli.testing.desafioquality.dto.room.RoomMt2DTO;
 import com.meli.testing.desafioquality.form.PropertyForm;
 import com.meli.testing.desafioquality.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,13 +41,18 @@ public class PropertyController {
         return new ResponseEntity<>(this.propertyService.calculateAreaPerRoom(id), HttpStatus.OK);
     }
 
+    @GetMapping("/biggest-room-m2/{id}")
+    public ResponseEntity<RoomMt2DTO> biggestRoomM2(@PathVariable long id) {
+        return new ResponseEntity<>(this.propertyService.biggestRoom(id), HttpStatus.OK);
+    }
+
     @GetMapping("/calculate-m2/{id}")
     public ResponseEntity<PropertyM2DTO> calculateArea(@PathVariable long id) {
         return new ResponseEntity<>(this.propertyService.calculateArea(id), HttpStatus.OK);
     }
 
     @GetMapping("/value-property/{id}")
-    public ResponseEntity<PropertyM2DTO> getPropertyValue(@PathVariable long id) {
+    public ResponseEntity<PropertyValueDTO> getPropertyValue(@PathVariable long id) {
         return new ResponseEntity<>(this.propertyService.getPropertyValue(id), HttpStatus.OK);
     }
 }

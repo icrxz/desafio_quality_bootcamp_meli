@@ -53,9 +53,8 @@ public class District {
     public District() {
     }
 
-    public District(@NotNull String name, @NotNull BigDecimal value_m2, List<Property> acres) {
+    public District(String name, BigDecimal value_m2) {
         this.name = name;
         this.value_m2 = value_m2;
-        this.acres = acres;
     }
 }

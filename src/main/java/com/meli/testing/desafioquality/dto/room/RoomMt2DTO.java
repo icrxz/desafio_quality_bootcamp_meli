@@ -1,7 +1,7 @@
 package com.meli.testing.desafioquality.dto.room;
 
 import com.meli.testing.desafioquality.entity.Room;
-import com.meli.testing.desafioquality.utils.CalculateRoom;
+import com.meli.testing.desafioquality.utils.CalculateArea;
 
 public class RoomMt2DTO {
     private String room_name;
@@ -10,7 +10,7 @@ public class RoomMt2DTO {
 
     public RoomMt2DTO(Room room) {
         this.room_name = room.getName();
-        this.room_mt2 = CalculateRoom.calculateArea(room);
+        this.room_mt2 = CalculateArea.calculateRoom(room);
     }
 
     public String getRoom_name() {

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class DistrictMapper {
+
     public static District convert(DistrictForm districtForm) {
         District district = new District();
 
