@@ -36,16 +36,21 @@ class PropertyControllerTest {
 	}
 
 	@Test
-	public void checkinResultPropertyCalculationM2() throws Exception {
+	public void PropertyServiceIntTestCheckinResultAreaCalculationValueRight() throws Exception {
 		
 		mock.perform(get("/property/calculate-m2/{id}", 1L))
         .andExpect(status().isOk())
         .andExpect(content().contentType(MediaType.APPLICATION_JSON))
         .andExpect(jsonPath("$.prop_m2").value(1590.0));
-		
 	}
 	
+	@Test
+	public void PropertyServiceIntTestCheckinResultPropertyCalculationM2IdIncorrectPropertyNotFoundExceptionMessageError() throws Exception {
+		
+		mock.perform(get("/property/calculate-m2/{id}", 0L))
+        .andExpect(status().isBadRequest())
+        .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+        .andExpect(jsonPath("$.message").value("Propriedade não encontrada"));
+	}
 	
-	 
-
 }
